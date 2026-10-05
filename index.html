@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>localsort</title>
+  <meta name="description" content="Private mail sorting. The AI runs on your device; your mail never leaves it.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <!-- laya-ts imports onnxruntime-web by bare name; serve our own pinned copy (no third-party CDN). -->
+  <script type="importmap">{ "imports": { "onnxruntime-web": "./ort/ort.webgpu.bundle.min.mjs" } }</script>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><img src="icon.svg" alt="" width="28" height="28"><span>localsort</span></div>
+    <div class="status" id="status"><span class="dot"></span><span id="status-text">Model not loaded</span></div>
+  </header>
+
+  <main id="app">
+    <section class="hero" id="hero">
+      <h1>Your inbox, sorted on your device.</h1>
+      <p>localsort reads and sorts your mail with an AI model that runs <b>inside this browser</b>.
+        No server sees your messages, your sign-in or the decisions. Arabic and English.</p>
+      <div class="actions">
+        <button id="btn-signin" class="primary">Sign in with Microsoft</button>
+        <button id="btn-demo" class="ghost">Try with sample emails</button>
+      </div>
+      <p class="fine" id="signin-note"></p>
+      <ul class="promises">
+        <li><b>On-device.</b> The model (≈460 MB, downloaded once) runs on your GPU or CPU.</li>
+        <li><b>Verified.</b> Every model file is checked against a pinned SHA-256 before it runs.</li>
+        <li><b>Careful.</b> If it isn't sure, the email stays in your inbox.</li>
+        <li><b>Scam checks.</b> Look-alike domains, failed SPF/DKIM/DMARC and the model's own read.</li>
+      </ul>
+    </section>
+
+    <section id="workspace" hidden>
+      <div class="toolbar">
+        <div>
+          <div class="who" id="who"></div>
+          <div class="summary" id="summary"></div>
+        </div>
+        <div class="toolbar-actions">
+          <label class="toggle" id="write-wrap"><input type="checkbox" id="write-back"> Write categories to Outlook</label>
+          <button id="btn-sort" class="primary">Sort inbox</button>
+          <button id="btn-signout" class="ghost small">Sign out</button>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <ol class="mail" id="mail"></ol>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Mail never leaves this browser.</span>
+    <span id="rules-info"></span>
+    <button id="btn-forget" class="link">Forget my corrections</button>
+  </footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

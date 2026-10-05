@@ -1,0 +1,30 @@
+{
+ "category": {
+  "type": "choice",
+  "instructions": "Which inbox folder does this email belong in?",
+  "criteria": {
+   "personal": "a real person or a government office writing to me personally: family, friends, official paperwork",
+   "work": "my employer or colleagues: tasks, meetings, internal company mail",
+   "money": "bank alerts, bills, invoices, payments made, statements, subscriptions renewing",
+   "orders": "receipts, order confirmations, shipping and delivery updates, package pickup",
+   "security": "sign-in alerts, one-time codes, password or account changes, suspicious account warnings",
+   "jobs": "job alerts, recruiters, job board matches, gig work offers",
+   "home": "landlord, apartment building or community notices",
+   "newsletters": "articles, digests, product updates, policy or terms updates",
+   "promotions": "marketing, sales, deals, coupons, offers to buy or sign up",
+   "social": "social network notifications: mentions, messages, posts from people I follow"
+  }
+ },
+ "phishing": {
+  "type": "noul",
+  "instructions": "Is this email a phishing or scam attempt to steal money, credentials, or personal data?",
+  "criteria": {
+   "true": "phishing, scam, or fraud",
+   "false": "a legitimate email"
+  }
+ },
+ "action": {
+  "type": "noul",
+  "instructions": "Does this email ask me to do something personally (reply, attend, pay, pick up, use a code)?"
+ }
+}
